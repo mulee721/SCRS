@@ -1,0 +1,506 @@
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+@import "tailwindcss" source(none);
+@source ".";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Design system definition.
+ *
+ * The @theme inline block maps CSS custom properties to Tailwind utility
+ * classes (e.g. --color-primary -> bg-primary, text-primary).
+ *
+ * The :root and .dark blocks define the actual color values using oklch.
+ * All colors MUST use oklch format.
+ *
+ * To add a new semantic color:
+ * 1. Add the variable to :root (light value) and .dark (dark value)
+ * 2. Register it in @theme inline as --color-<name>: var(--<name>)
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-navy: var(--navy);
+  --color-navy-foreground: var(--navy-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --shadow-card: var(--shadow-card);
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-heading: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  /* ── Neon accent ── */
+  --color-neon: var(--neon);
+  --color-neon-foreground: var(--neon-foreground);
+}
+
+:root {
+  --radius: 0.875rem;
+  --background: oklch(0.975 0.006 264);
+  --foreground: oklch(0.24 0.045 255);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.24 0.045 255);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.24 0.045 255);
+  --primary: oklch(0.623 0.188 259.8);
+  --primary-foreground: oklch(0.99 0 0);
+  --navy: oklch(0.29 0.06 255);
+  --navy-foreground: oklch(0.97 0.01 255);
+  --secondary: oklch(0.955 0.012 260);
+  --secondary-foreground: oklch(0.29 0.06 255);
+  --muted: oklch(0.955 0.01 260);
+  --muted-foreground: oklch(0.52 0.03 258);
+  --accent: oklch(0.94 0.03 260);
+  --accent-foreground: oklch(0.35 0.12 260);
+  --destructive: oklch(0.6 0.22 25);
+  --destructive-foreground: oklch(0.99 0 0);
+  --success: oklch(0.62 0.15 152);
+  --success-foreground: oklch(0.99 0 0);
+  --warning: oklch(0.72 0.17 60);
+  --warning-foreground: oklch(0.99 0 0);
+  --border: oklch(0.92 0.012 260);
+  --input: oklch(0.9 0.014 260);
+  --ring: oklch(0.623 0.188 259.8);
+  --chart-1: oklch(0.623 0.188 259.8);
+  --chart-2: oklch(0.29 0.06 255);
+  --chart-3: oklch(0.62 0.15 152);
+  --chart-4: oklch(0.72 0.17 60);
+  --chart-5: oklch(0.7 0.12 220);
+  --shadow-card: 0 1px 2px oklch(0.29 0.06 255 / 0.04), 0 4px 16px -4px oklch(0.29 0.06 255 / 0.08);
+  --sidebar: oklch(0.29 0.06 255);
+  --sidebar-foreground: oklch(0.86 0.02 255);
+  --sidebar-primary: oklch(0.623 0.188 259.8);
+  --sidebar-primary-foreground: oklch(0.99 0 0);
+  --sidebar-accent: oklch(0.35 0.065 255);
+  --sidebar-accent-foreground: oklch(0.99 0 0);
+  --sidebar-border: oklch(0.36 0.05 255);
+  --sidebar-ring: oklch(0.623 0.188 259.8);
+  /* neon lime accent — used on public pages */
+  --neon: oklch(0.88 0.22 128);         /* #C8F135-ish lime-yellow */
+  --neon-foreground: oklch(0.13 0.04 255); /* near-black text on neon */
+}
+
+.dark {
+  --background: oklch(0.17 0.025 258);
+  --foreground: oklch(0.95 0.008 258);
+  --card: oklch(0.215 0.03 258);
+  --card-foreground: oklch(0.95 0.008 258);
+  --popover: oklch(0.215 0.03 258);
+  --popover-foreground: oklch(0.95 0.008 258);
+  --primary: oklch(0.66 0.17 259.8);
+  --primary-foreground: oklch(0.99 0 0);
+  --navy: oklch(0.13 0.03 258);
+  --navy-foreground: oklch(0.95 0.01 255);
+  --secondary: oklch(0.27 0.03 258);
+  --secondary-foreground: oklch(0.95 0.008 258);
+  --muted: oklch(0.26 0.03 258);
+  --muted-foreground: oklch(0.7 0.025 258);
+  --accent: oklch(0.3 0.06 260);
+  --accent-foreground: oklch(0.9 0.05 260);
+  --destructive: oklch(0.65 0.2 25);
+  --destructive-foreground: oklch(0.99 0 0);
+  --success: oklch(0.68 0.15 152);
+  --success-foreground: oklch(0.15 0 0);
+  --warning: oklch(0.76 0.16 60);
+  --warning-foreground: oklch(0.15 0 0);
+  --border: oklch(1 0 0 / 9%);
+  --input: oklch(1 0 0 / 14%);
+  --ring: oklch(0.66 0.17 259.8);
+  --shadow-card: 0 1px 2px oklch(0 0 0 / 0.3), 0 6px 20px -6px oklch(0 0 0 / 0.4);
+  --sidebar: oklch(0.14 0.025 258);
+  --sidebar-foreground: oklch(0.8 0.02 255);
+  --sidebar-primary: oklch(0.66 0.17 259.8);
+  --sidebar-primary-foreground: oklch(0.99 0 0);
+  --sidebar-accent: oklch(0.22 0.03 258);
+  --sidebar-accent-foreground: oklch(0.99 0 0);
+  --sidebar-border: oklch(1 0 0 / 8%);
+  --sidebar-ring: oklch(0.66 0.17 259.8);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+  }
+}
+
+/* ── Public-page animation keyframes ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes floatY {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-12px); }
+}
+
+/* ── Animation utility classes ── */
+.animate-fade-up     { animation: fadeUp 0.6s ease-out both; }
+.animate-slide-down  { animation: slideInDown 0.6s ease-out both; }
+.animate-slide-up    { animation: slideInUp 0.6s ease-out both; }
+.animate-slide-right { animation: slideInRight 0.7s ease-out both; }
+.animate-float       { animation: floatY 6s ease-in-out infinite; }
+
+/* ══════════════════════════════════════════════
+   Site header — CSS-variable-driven classes
+   Variables injected via inline style on each element
+   ══════════════════════════════════════════════ */
+
+/* ── desktop nav link ── */
+.site-nav-link {
+  position:       relative;
+  display:        inline-flex;
+  align-items:    center;
+  padding:        6px 14px 8px;   /* extra bottom padding for the underline */
+  border-radius:  8px;
+  font-size:      15px;
+  font-weight:    500;
+  font-family:    'Inter', ui-sans-serif, system-ui, sans-serif;
+  color:          var(--nav-muted);
+  text-decoration:none;
+  white-space:    nowrap;
+  background:     transparent;
+  transition:     color 200ms ease-out, background 200ms ease-out;
+}
+
+/* hover: cyan text + faint cyan bg */
+.site-nav-link:hover {
+  color:      var(--nav-accent);
+  background: var(--nav-accent-bg);
+}
+
+/* sliding underline on hover (non-active only) */
+.site-nav-link::after {
+  content:          "";
+  position:         absolute;
+  bottom:           0;
+  left:             14px;   /* align with text indent */
+  right:            14px;
+  height:           2px;
+  border-radius:    2px;
+  background:       var(--nav-accent);
+  transform:        scaleX(0);
+  transform-origin: left;
+  transition:       transform 200ms ease-out;
+}
+.site-nav-link:hover::after {
+  transform: scaleX(1);
+}
+
+/* active state: permanent cyan underline, brighter text, NO hover bg */
+.site-nav-link--active {
+  color: var(--nav-accent);
+}
+.site-nav-link--active::after {
+  transform: scaleX(1);   /* always visible */
+}
+.site-nav-link--active:hover {
+  background: transparent;
+}
+
+/* ── icon buttons (theme toggle, hamburger) ── */
+.site-icon-btn {
+  width:          40px;
+  height:         40px;
+  border-radius:  10px;
+  border:         1px solid var(--btn-border);
+  background:     transparent;
+  color:          var(--btn-muted);
+  cursor:         pointer;
+  display:        flex;
+  align-items:    center;
+  justify-content:center;
+  transition:     border-color 180ms ease-out, color 180ms ease-out, transform 180ms ease-out;
+}
+/* hamburger needs a slightly larger tap target */
+.site-icon-btn.lg\:hidden {
+  width:  44px;
+  height: 44px;
+}
+.site-icon-btn:hover {
+  border-color: var(--btn-accent);
+  color:        var(--btn-accent);
+  transform:    scale(1.05);
+}
+
+/* ── sign-in text link ── */
+.site-signin-link {
+  padding:        8px 14px;
+  font-size:      14px;
+  font-weight:    500;
+  font-family:    'Inter', ui-sans-serif, system-ui, sans-serif;
+  color:          var(--link-muted);
+  text-decoration:none;
+  border-radius:  8px;
+  transition:     color 180ms ease-out;
+}
+.site-signin-link:hover {
+  color: var(--link-accent);
+}
+
+/* ── CTA button ── */
+.site-cta-btn {
+  padding:      9px 20px;
+  border-radius:8px;
+  border:       none;
+  background:   var(--cta-accent);
+  color:        var(--cta-btn-text);
+  font-weight:  600;
+  font-size:    14px;
+  font-family:  'Inter', ui-sans-serif, system-ui, sans-serif;
+  cursor:       pointer;
+  box-shadow:   none;
+  transition:   transform 150ms ease-out, box-shadow 150ms ease-out;
+  white-space:  nowrap;
+}
+.site-cta-btn:hover {
+  transform:  translateY(-1px);
+  box-shadow: 0 6px 18px color-mix(in srgb, var(--cta-accent) 40%, transparent);
+}
+.site-cta-btn:active {
+  transform:  translateY(0);
+  box-shadow: none;
+}
+
+/* ── mobile nav link ── */
+.site-mobile-link {
+  display:        flex;
+  align-items:    center;
+  gap:            12px;
+  min-height:     48px;
+  padding:        0 14px;
+  border-radius:  8px;
+  font-size:      16px;
+  font-weight:    500;
+  font-family:    'Inter', ui-sans-serif, system-ui, sans-serif;
+  color:          var(--nav-muted);
+  text-decoration:none;
+  border-left:    3px solid transparent;
+  background:     transparent;
+  transition:     color 180ms ease-out, background 180ms ease-out, border-color 180ms ease-out;
+}
+.site-mobile-link:hover {
+  color:      var(--nav-accent);
+  background: var(--nav-accent-bg);
+}
+.site-mobile-link--active {
+  color:        var(--nav-accent);
+  border-color: var(--nav-accent);
+  background:   var(--nav-accent-bg);
+}
+
+/* ── mobile auth buttons ── */
+.site-mobile-auth-outline,
+.site-mobile-auth-solid {
+  flex:           1;
+  min-height:     48px;
+  padding:        12px;
+  border-radius:  8px;
+  text-align:     center;
+  font-size:      15px;
+  font-weight:    600;
+  font-family:    'Inter', ui-sans-serif, system-ui, sans-serif;
+  text-decoration:none;
+  display:        flex;
+  align-items:    center;
+  justify-content:center;
+  transition:     background 180ms ease-out;
+}
+.site-mobile-auth-outline {
+  color:      var(--nav-accent);
+  border:     1px solid color-mix(in srgb, var(--nav-accent) 60%, transparent);
+  background: transparent;
+}
+.site-mobile-auth-outline:hover {
+  background: var(--nav-accent-bg);
+}
+.site-mobile-auth-solid {
+  color:      var(--cta-btn-text);
+  background: var(--cta-accent);
+  border:     none;
+}
+.site-mobile-auth-solid:hover {
+  opacity: 0.92;
+}
+
+/* ── Global focus-visible ring (keyboard only — never on mouse click) ── */
+*:focus {
+  outline: none;
+}
+*:focus-visible {
+  outline: 2px solid oklch(0.76 0.13 194);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* ── Reduced-motion: disable all animations ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ── Hover-underline utility for auth links ── */
+.hover-underline {
+  text-decoration: none;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 200ms ease-out;
+}
+.hover-underline:hover {
+  background-size: 100% 1px;
+}
+
+/* ══════════════════════════════════════════════
+   Social link buttons (footer)
+   ══════════════════════════════════════════════ */
+.social-link {
+  position:       relative;
+  width:          36px;
+  height:         36px;
+  border-radius:  10px;
+  border:         1px solid var(--social-border);
+  background:     transparent;
+  color:          color-mix(in srgb, var(--social-accent) 55%, white);
+  display:        flex;
+  align-items:    center;
+  justify-content:center;
+  text-decoration:none;
+  /* entrance animation */
+  transition:
+    color            200ms ease-out,
+    border-color     200ms ease-out,
+    background       200ms ease-out,
+    transform        200ms cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow       200ms ease-out;
+}
+
+.social-link:hover {
+  color:        var(--social-accent);
+  border-color: var(--social-accent);
+  background:   color-mix(in srgb, var(--social-accent) 10%, transparent);
+  transform:    translateY(-3px) scale(1.08);
+  box-shadow:   0 8px 20px color-mix(in srgb, var(--social-accent) 30%, transparent);
+}
+
+.social-link:active {
+  transform:  translateY(0) scale(0.96);
+  box-shadow: none;
+}
+
+/* tooltip */
+.social-link__tooltip {
+  position:        absolute;
+  bottom:          calc(100% + 8px);
+  left:            50%;
+  transform:       translateX(-50%) translateY(4px);
+  background:      color-mix(in srgb, var(--social-accent) 15%, #0b1626);
+  border:          1px solid color-mix(in srgb, var(--social-accent) 30%, transparent);
+  color:           var(--social-accent);
+  font-size:       11px;
+  font-weight:     600;
+  font-family:     'Inter', ui-sans-serif, system-ui, sans-serif;
+  white-space:     nowrap;
+  padding:         4px 8px;
+  border-radius:   6px;
+  pointer-events:  none;
+  opacity:         0;
+  transition:
+    opacity   180ms ease-out,
+    transform 180ms ease-out;
+}
+
+.social-link:hover .social-link__tooltip {
+  opacity:   1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* stagger the entrance of each button when they first appear */
+.social-link:nth-child(1) { animation: socialPop 400ms 0ms   cubic-bezier(0.34,1.56,0.64,1) both; }
+.social-link:nth-child(2) { animation: socialPop 400ms 60ms  cubic-bezier(0.34,1.56,0.64,1) both; }
+.social-link:nth-child(3) { animation: socialPop 400ms 120ms cubic-bezier(0.34,1.56,0.64,1) both; }
+.social-link:nth-child(4) { animation: socialPop 400ms 180ms cubic-bezier(0.34,1.56,0.64,1) both; }
+
+@keyframes socialPop {
+  from { opacity: 0; transform: translateY(8px) scale(0.8); }
+  to   { opacity: 1; transform: translateY(0)   scale(1);   }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .social-link,
+  .social-link__tooltip {
+    transition: none !important;
+    animation:  none !important;
+  }
+}

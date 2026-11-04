@@ -1,5 +1,6 @@
 # Student Course Registration System (SCRS)
 
+<<<<<<< HEAD
 ## 🎓 Project Overview
 
 A comprehensive, enterprise-grade Student Course Registration System built with modern web technologies. Complete with JWT authentication, MongoDB persistence, role-based access control, and advanced course registration validation.
@@ -456,3 +457,24 @@ For questions or support, contact: admin@yourdomain.com
 **Status:** ✅ Production Ready  
 **Last Updated:** October 31, 2026  
 **Integration:** ✅ Full Backend-Frontend Integration Complete
+=======
+A full-stack web application designed to simplify and manage university course registration and academic activities through a centralized platform.
+
+## Key Features
+
+- **Student Dashboard:** Browse available courses, register for courses, and track registration status.
+- **Lecturer Dashboard:** View assigned courses and manage course-related academic information.
+- **Admin Dashboard:** Manage students, lecturers, departments, courses, semesters, and registrations.
+- **Authentication & Authorization:** Role-based access for students, lecturers, and administrators.
+- **Course Management:** Organize and manage university course information.
+
+## Technology Stack
+
+**Frontend:** React, TypeScript, Tailwind CSS, React Router, Axios  
+**Backend:** NestJS  
+**Database:** MongoDB
+
+## Project Goal
+
+To reduce manual registration processes, improve academic administration, and provide students, lecturers, and administrators with an efficient course registration experience.
+>>>>>>> d1c5ec0f4a78144572e89144a39731cb32e65c11
